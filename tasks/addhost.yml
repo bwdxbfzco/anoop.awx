@@ -14,7 +14,7 @@
       Accept: "application/json"
     body_format: json
     body: "{\"inventory\": {{ awx_inventory_id }},\"name\":\"{{ ip_address }}\", \"variables\": \"ansible_port: {{ awx_host_port }}\\nansible_user: {{ awx_host_username }}\\nansible_become: {{ awx_host_become }}\"}"
-  ignore_errors: yes 
+  ignore_errors: no 
   when: (ip_address is defined)
   
 - name: Set Stats for Workflow
