@@ -3,8 +3,8 @@
 - name: save host
   uri:
     url: "{{ awx_host }}/api/v2/inventories/{{ awx_inventory_id }}/hosts/"
-    user: "{{ aws_admin_user }}"
-    password: "{{ aws_admin_password }}"
+    user: "{{ awx_admin_user }}"
+    password: "{{ awx_admin_password }}"
     method: POST
     validate_certs: false
     return_content: yes
