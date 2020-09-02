@@ -1,4 +1,4 @@
-awx_url: http://10.10.0.4
+awx_host: http://10.10.0.4
 aws_admin_user: admin
 awx_admin_password: admin
 awx_inventory_id: 1
