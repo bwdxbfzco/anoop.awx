@@ -1,0 +1,4 @@
+galaxy_info:
+  author: anoop sharda
+  description: ansible role for managing Buzinessware RabbitMQ
+  company: buzinessware

@@ -1,0 +1,7 @@
+awx_url: http://10.10.0.4
+aws_admin_user: admin
+awx_admin_password: admin
+awx_inventory_id: 1
+awx_host_port: 22
+awx_host_username: root
+awx_host_become: yes
