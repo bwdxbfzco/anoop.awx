@@ -1,10 +1,10 @@
 ---
 
-- name: save host
+- name: save host to awx inventory
   uri:
-    url: "{{ awx_host }}/api/v2/inventories/33/hosts/"
-    user: "{{ awx_admin_user }}"
-    password: "{{ awx_admin_password }}"
+    url: "{{ bw_awx_host }}/api/v2/inventories/{{ bw_awx_inventory_id }}/hosts/"
+    user: "{{ bw_awx_admin_user }}"
+    password: "{{ bw_awx_admin_password }}"
     method: POST
     validate_certs: false
     return_content: yes
@@ -13,8 +13,8 @@
     headers:
       Accept: "application/json"
     body_format: json
-    body: "{\"inventory\": 33,\"name\":\"{{ ip_address }}\", \"variables\": \"ansible_port: {{ awx_host_port }}\\nansible_user: {{ awx_host_username }}\\nansible_become: {{ awx_host_become }}\"}"
-  ignore_errors: no
+    body: "{\"inventory\": {{ bw_awx_inventory_id }},\"name\":\"{{ ip_address }}\", \"variables\": \"ansible_port: {{ bw_awx_host_port }}\\nansible_user: {{ bw_awx_host_username }}\\nansible_become: {{ bw_awx_host_become }}\"}"
+  ignore_errors: yes
   register: result
   
 - debug:
