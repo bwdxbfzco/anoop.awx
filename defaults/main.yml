@@ -1,3 +1,4 @@
+---
 bw_awx_host: http://10.10.0.4
 bw_awx_admin_user: admin
 bw_awx_admin_password: admin
