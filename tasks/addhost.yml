@@ -38,7 +38,7 @@
 - name: set fact
   set_fact:
     _awx_id: "{{ _findhost_result.json.results[0].id }}"
-  when: (_findhost_result is defined)
+  when: (_findhost_result is defined) and (bw_awx_cmd == "del_host")
   
 - name: delete host from the inventory
   uri:
