@@ -40,6 +40,9 @@
     _awx_id: "{{_findhost_result}}"
   when: (_findhost_result is defined)
   
+- debug:
+    msg: "{{ _findhost_result }}"
+    
 - name: Set Stats for Workflow
   set_stats:
     data:
