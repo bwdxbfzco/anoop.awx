@@ -49,7 +49,7 @@
     validate_certs: false
     return_content: yes
     force_basic_auth: yes
-    status_code: 200
+    status_code: 204
     headers:
       Accept: "application/json"
     body_format: json
