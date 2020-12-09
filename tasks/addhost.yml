@@ -37,14 +37,30 @@
 
 - name: set fact
   set_fact:
-    _awx_id: "{{_findhost_result}}"
+    _awx_id: "{{ _findhost_result.json.results[0].id }}"
   when: (_findhost_result is defined)
   
-- debug:
-    msg: "{{ _findhost_result.json.results[0].id }}"
+- name: delete host from the inventory
+- name: get id of the host for deletion
+  uri:
+    url: "{{ bw_awx_host }}/api/v2/inventories/{{ bw_awx_inventory_id }}/hosts"
+    user: "{{ bw_awx_admin_user }}"
+    password: "{{ bw_awx_admin_password }}"
+    method: GET
+    validate_certs: false
+    return_content: yes
+    force_basic_auth: yes
+    status_code: 200
+    headers:
+      Accept: "application/json"
+    body_format: json
+    body: "{\"id\": {{ _awx_id }},\"disassociate\": true}"    
+  ignore_errors: yes
+  when: (_awx_id is defined) and (bw_awx_cmd is defined) and (bw_awx_cmd == "del_host")
+  
     
 - name: Set Stats for Workflow
   set_stats:
     data:
       ip_address: "{{ ip_address }}"
-  when: (ip_address is defined)
+  when: (ip_address is defined) and (bw_awx_cmd is defined) and (bw_awx_cmd == "add_host")
