@@ -41,7 +41,7 @@
   when: (_findhost_result is defined)
   
 - debug:
-    msg: "{{ _findhost_result }}"
+    msg: "{{ _findhost_result.json.results[0].id }}"
     
 - name: Set Stats for Workflow
   set_stats:
