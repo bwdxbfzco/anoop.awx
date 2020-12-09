@@ -41,7 +41,6 @@
   when: (_findhost_result is defined)
   
 - name: delete host from the inventory
-- name: get id of the host for deletion
   uri:
     url: "{{ bw_awx_host }}/api/v2/inventories/{{ bw_awx_inventory_id }}/hosts"
     user: "{{ bw_awx_admin_user }}"
