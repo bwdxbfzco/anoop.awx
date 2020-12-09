@@ -42,7 +42,7 @@
   
 - name: delete host from the inventory
   uri:
-    url: "{{ bw_awx_host }}/api/v2/inventories/{{ bw_awx_inventory_id }}/hosts"
+    url: "{{ bw_awx_host }}/api/v2/inventories/{{ bw_awx_inventory_id }}/hosts/"
     user: "{{ bw_awx_admin_user }}"
     password: "{{ bw_awx_admin_password }}"
     method: POST
