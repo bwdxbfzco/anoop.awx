@@ -45,7 +45,7 @@
     url: "{{ bw_awx_host }}/api/v2/inventories/{{ bw_awx_inventory_id }}/hosts"
     user: "{{ bw_awx_admin_user }}"
     password: "{{ bw_awx_admin_password }}"
-    method: GET
+    method: POST
     validate_certs: false
     return_content: yes
     force_basic_auth: yes
