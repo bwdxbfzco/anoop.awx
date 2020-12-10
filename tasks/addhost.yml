@@ -35,6 +35,9 @@
   register: _findhost_result
   when: (bw_awx_cmd is defined) and (bw_awx_cmd == "del_host")
 
+- debug:
+    msg: "{{ _findhost_result }}"
+    
 - name: set fact
   set_fact:
     _awx_id: "{{ _findhost_result.json.results[0].id }}"
