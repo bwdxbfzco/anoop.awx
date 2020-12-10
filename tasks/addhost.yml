@@ -18,6 +18,25 @@
   register: _addhost_result
   when: (bw_awx_cmd is defined) and (bw_awx_cmd == "add_host")
   
+  
+- name: save host to inventory network devices
+  uri:
+    url: "{{ bw_awx_host }}/api/v2/inventories/{{ bw_awx_inventory_id }}/hosts/"
+    user: "{{ bw_awx_admin_user }}"
+    password: "{{ bw_awx_admin_password }}"
+    method: POST
+    validate_certs: false
+    return_content: yes
+    force_basic_auth: yes
+    status_code: 201
+    headers:
+      Accept: "application/json"
+    body_format: json
+    body: "{\"inventory\": {{ bw_awx_inventory_id }},\"name\":\"{{ ip_address }}\", \"variables\": \"ansible_port: {{ bw_awx_host_port }}\\nansible_network_os: \"vyos\"\\nansible_connection: \"network_cli\"\"}"
+  ignore_errors: yes
+  register: _addhost_result
+  when: (bw_awx_cmd is defined) and (bw_awx_cmd == "add_host_network")
+  
 - name: get id of the host for deletion
   uri:
     url: "{{ bw_awx_host }}/api/v2/inventories/{{ bw_awx_inventory_id }}/hosts?search={{ip_address}}"
