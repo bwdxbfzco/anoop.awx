@@ -32,7 +32,7 @@
     headers:
       Accept: "application/json"
     body_format: json
-    body: "{\"inventory\": {{ bw_awx_inventory_id }},\"name\":\"{{ ip_address }}\", \"variables\": \"ansible_port: {{ bw_awx_host_port }}\\nansible_network_os: \"vyos\"\\nansible_connection: \"network_cli\"\"}"
+    body: "{\"inventory\": {{ bw_awx_inventory_id }},\"name\":\"{{ ip_address }}\"}"
   ignore_errors: yes
   register: _addhost_result_network
   when: (bw_awx_cmd is defined) and (bw_awx_cmd == "add_host_network")
